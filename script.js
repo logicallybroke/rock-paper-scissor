@@ -8,7 +8,7 @@ function getComputerChoice (){
 function playing(computerSelection, playerSelection)
 {
     if(computerSelection == playerSelection)
-    playing();
+    return "draw"
 
     if(computerSelection == 'rock' && playerSelection == 'paper')
     {
@@ -43,14 +43,25 @@ function game()
 {
     for(let i =0; i<5; i++)
     {
-        const playerSelection = str.toLower(prompt('enter your choice (rock/paper/scissor)'));
+        const playerSelection = (prompt('enter your choice (rock/paper/scissor)'));
+        // playerSelection.toLowerCase();
         const computerSelection = getComputerChoice();
         let result = playing(computerSelection, playerSelection);
+        console.log(result);
+        
+        if(result == 'draw')
+        {
+            i--;
+            continue;
+        }
+
         if(result[4] == 'W')
             cnt_player++;
         else cnt_computer++;
     }
 }
+
+game();
 if(cnt_computer>cnt_player)
     console.log('You Lose the Game :(((');
 else
